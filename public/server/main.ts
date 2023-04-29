@@ -19,6 +19,10 @@ router.all("/api/:greeting", (ctx, next) => {
 // Define a fallback route for any non-matching paths
 router.get("/(.*)", async (ctx, next) => {
   try {
+    console.log(ctx.request.url.pathname);
+    if (ctx.request.url.pathname.startsWith('/server')) {
+      throw new Error('Not Allowed');
+    }
     console.log(ctx.request.url.href);
     await ctx.send({
       root: isDev ? `${Deno.cwd()}/dist` : Deno.cwd(),

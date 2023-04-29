@@ -25,5 +25,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: deno-kv-cms # TODO: replace with Deno Deploy project name
-          entrypoint: main.ts
+          entrypoint: server/main.ts
           root: dist
