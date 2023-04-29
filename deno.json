@@ -1,7 +1,7 @@
 {
   "tasks": {
-    "start": "deno run -A --unstable main.ts",
-    "dev": "deno run -A --unstable main.ts --dev"
+    "start": "deno run -A --unstable public/main.ts",
+    "dev": "deno run -A --unstable public/main.ts --dev"
   },
   "importMap": "./import_map.json",
   "compilerOptions": {

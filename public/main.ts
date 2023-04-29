@@ -16,21 +16,19 @@ router.all("/api/:greeting", (ctx, next) => {
     ctx.response.body = `Deno says: ${ctx.params.greeting}`;
 });
 
-if (!isDev) {
-  // Define a fallback route for any non-matching paths
-  router.get("/(.*)", async (ctx, next) => {
-    try {
-      console.log(ctx.request.url.href);
-      await ctx.send({
-        root: isDev ? `${Deno.cwd()}/dist` : Deno.cwd(),
-        index: "index.html",
-      });
-    } catch {
-      ctx.response.status = 404;
-      ctx.response.body = "404 File not found";
-    }
-  });
-}
+// Define a fallback route for any non-matching paths
+router.get("/(.*)", async (ctx, next) => {
+  try {
+    console.log(ctx.request.url.href);
+    await ctx.send({
+      root: isDev ? `${Deno.cwd()}/dist` : Deno.cwd(),
+      index: "index.html",
+    });
+  } catch {
+    ctx.response.status = 404;
+    ctx.response.body = "404 File not found";
+  }
+});
 
 // Create a new instance of the Oak application
 const app = new Application();
