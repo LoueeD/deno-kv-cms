@@ -22,7 +22,7 @@ if (!isDev) {
     try {
       console.log(ctx.request.url.href);
       await ctx.send({
-        root: `${Deno.cwd()}/dist`,
+        root: isDev ? `${Deno.cwd()}/dist` : Deno.cwd(),
         index: "index.html",
       });
     } catch {

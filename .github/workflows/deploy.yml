@@ -18,7 +18,7 @@ jobs:
         run: npm ci
 
       # Not using npm? Change `npm run build` to `yarn build` or `pnpm run build`
-      - name: Build Astro
+      - name: Build Nuxt
         run: npm run generate
 
       - name: Upload to Deno Deploy
@@ -26,3 +26,4 @@ jobs:
         with:
           project: deno-kv-cms # TODO: replace with Deno Deploy project name
           entrypoint: main.ts
+          root: dist
